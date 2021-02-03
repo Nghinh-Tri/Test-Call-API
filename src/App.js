@@ -1,25 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react';
+import { callAPI } from './util';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+
+    connectApi = () => {
+        console.log('call api')
+        callAPI('Certification/getCertifications', 'GET', null).then(res => {
+            console.log('data',res.data)
+        })
+    }
+
+    render() {
+        return (
+            <div>
+                {this.connectApi()}
+            </div>
+        );
+    }
 }
 
 export default App;
